@@ -1,12 +1,17 @@
 import React, {Component} from 'react';
-import {connect} from 'react-redux';
 import './Panel.css'
+import connect from "react-redux/es/connect/connect";
+
 
 class Panel extends Component {
     render(){
+        const {text, background} = this.props;
+        const PanelStyle = {
+            backgroundColor: background,
+        };
         return (
-            <div className='panel'>
-                <h1>{this.props.password}</h1>
+            <div className='panel' style={PanelStyle}>
+                <h1>{text}</h1>
             </div>
         )
     }
@@ -14,7 +19,8 @@ class Panel extends Component {
 
 const mapStateToProps = state => {
     return {
-        password: state.password
+        text: state.text,
+        background: state.background
     };
 };
 
